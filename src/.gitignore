@@ -1,0 +1,12 @@
+# Ignorar arquivos compilados
+/bin/
+
+# Ignorar arquivos .dcu
+/dcu/
+
+# Ignorar arquivos temporários e de configuração do usuário do Delphi
+*.~*
+*.dsk
+*.ddp
+*.identcache
+*.local
