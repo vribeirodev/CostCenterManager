@@ -1,0 +1,11 @@
+unit DBConnTests;
+
+interface
+
+uses
+  DUnitX.TestFramework,
+  DBConn;
+
+implementation
+
+end.
