@@ -52,6 +52,7 @@ object FormLogin: TFormLogin
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      OnClick = btnFecharClick
     end
     object pnlLateral: TPanel
       Left = 0
@@ -11578,6 +11579,7 @@ object FormLogin: TFormLogin
         Cursor = crHandPoint
         Align = alClient
         Flat = True
+        OnClick = btnConfigClick
         ExplicitLeft = 8
         ExplicitTop = 8
         ExplicitWidth = 23

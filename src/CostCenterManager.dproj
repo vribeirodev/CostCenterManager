@@ -112,6 +112,14 @@
             <Form>FormLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="views\Layout.pas">
+            <Form>FormLayout</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\DBConfig.pas">
+            <Form>FormDBConfig</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
