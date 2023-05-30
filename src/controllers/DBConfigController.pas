@@ -10,13 +10,16 @@ uses
   System.Hash,
   Dialogs,
   DBConfigFileHandler,
-  DBConfig;
+  DBConfig,
+  DBConfigValidator;
 
 type
   TDBConfigController = class
   private
     FDBConfigFileHandler: TDBConfigFileHandler;
-    const CONFIG_FILE_NAME = 'DBConfig.json';
+    const
+      CONFIG_FILE_NAME = 'DBConfig.json';
+      ERR_FIELDS_NOT_FILLED = 'Por favor, preencha todos os campos.';
   public
     constructor Create;
     destructor Destroy; override;
@@ -62,6 +65,9 @@ end;
 
 procedure TDBConfigController.GravarConfiguracoes(DBConfig: TDBConfig);
 begin
+  if not TDBConfigValidator.AreFieldsValid(DBConfig) then
+    raise Exception.Create(ERR_FIELDS_NOT_FILLED);
+
   FDBConfigFileHandler.SaveToFile(DBConfig);
 end;
 

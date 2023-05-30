@@ -53,8 +53,6 @@ type
     { Private declarations }
     FDBConfigController: TDBConfigController;
     FDBConfig: TDBConfig;
-
-    function AreFieldsValid: Boolean;
   public
     { Public declarations }
   end;
@@ -87,15 +85,6 @@ begin
   inherited;
 end;
 
-function TFormDBConfig.AreFieldsValid: Boolean;
-begin
-  Result := (edtDatabase.Text <> '') and
-            (edtUsername.Text <> '') and
-            (edtPassword.Text <> '') and
-            (edtServer.Text <> '') and
-            (edtPort.Text <> '');
-end;
-
 procedure TFormDBConfig.btnDatabaseClick(Sender: TObject);
 begin
   edtDatabase.Text := FDBConfigController.SelectDatabaseFile;
@@ -103,12 +92,12 @@ end;
 
 procedure TFormDBConfig.btnGravarClick(Sender: TObject);
 begin
-  if not AreFieldsValid then
-  begin
-    ShowMessage('Por favor, preencha todos os campos.');
-    Exit;
-  end;
   try
+    FDBConfig.Database := edtDatabase.Text;
+    FDBConfig.Username := edtUsername.Text;
+    FDBConfig.Password := edtPassword.Text;
+    FDBConfig.Server   := edtServer.Text;
+    FDBConfig.Port     := edtPort.Text;
 
     FDBConfigController.GravarConfiguracoes(FDBConfig);
     ShowMessage('Configurações gravadas com sucesso!');
@@ -130,11 +119,6 @@ end;
 
 procedure TFormDBConfig.btnTestarClick(Sender: TObject);
 begin
-  if not AreFieldsValid then
-  begin
-    ShowMessage('Por favor, preencha todos os campos.');
-    Exit;
-  end;
   try
     FDBConfig.Database := edtDatabase.Text;
     FDBConfig.Username := edtUsername.Text;

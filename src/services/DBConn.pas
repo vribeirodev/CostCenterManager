@@ -6,6 +6,7 @@ uses
   FireDAC.Comp.Client,
   FireDAC.Phys.FB,
   FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
   FireDAC.Stan.Error,
   System.IOUtils,
   System.SysUtils,
@@ -56,6 +57,12 @@ begin
     FConn.Params.Add('Server=' + aDBConfig.Server);
     FConn.Params.Add('Port=' + aDBConfig.Port);
     FConn.Params.Add('Protocol=TCPIP');
+
+    FConn.Params.Add('POOLING=true');
+    FConn.Params.Add('POOL_MAXIMUM_ITEMS=50');
+    FConn.Params.Add('POOL_CLEANUP_TIMEOUT=60');
+    FConn.Params.Add('POOL_EXPIRE_TIMEOUT=120');
+
   finally
     FBDriverLink.Free;
   end;

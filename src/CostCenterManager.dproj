@@ -125,6 +125,8 @@
         </DCCReference>
         <DCCReference Include="controllers\DBConfigController.pas"/>
         <DCCReference Include="services\DBConfigFileHandler.pas"/>
+        <DCCReference Include="validators\DBConfigValidator.pas"/>
+        <DCCReference Include="models\UserModel.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
