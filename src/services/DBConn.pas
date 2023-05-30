@@ -9,7 +9,8 @@ uses
   FireDAC.Stan.Error,
   System.IOUtils,
   System.SysUtils,
-  LogUtils;
+  LogUtils,
+  DBConfig;
 
 type
   TDBConn = class
@@ -17,10 +18,8 @@ type
     class var FConn: TFDConnection;
     class constructor Create;
     class destructor Destroy;
-    class procedure ConfigurarConexao(aDatabase, aUserName, aPassword: string;
-                                      aServer: string = 'localhost';
-                                      aPort: string = '3050');
   public
+    class procedure ConfigurarConexao(const aDBConfig: TDBConfig);
     class function GetInstance: TFDConnection;
   end;
 implementation
@@ -37,7 +36,7 @@ begin
   FConn.Free;
 end;
 
-class procedure TDBConn.ConfigurarConexao(aDatabase: string; aUserName: string; aPassword: string; aServer: string = 'localhost'; aPort: string = '3050');
+class procedure TDBConn.ConfigurarConexao(const aDBConfig: TDBConfig);
 const
   FBCLIENT_DLL = 'fbclient.dll';
 var
@@ -50,12 +49,13 @@ begin
 
     FConn.Params.Clear;
     FConn.Params.DriverID := 'FB';
-    FConn.Params.Database := aDatabase;
-    FConn.Params.UserName := aUserName;
-    FConn.Params.Password := aPassword;
+
+    FConn.Params.Database := aDBConfig.Database;
+    FConn.Params.UserName := aDBConfig.Username;
+    FConn.Params.Password := aDBConfig.Password;
+    FConn.Params.Add('Server=' + aDBConfig.Server);
+    FConn.Params.Add('Port=' + aDBConfig.Port);
     FConn.Params.Add('Protocol=TCPIP');
-    FConn.Params.Add('Server=' + aServer);
-    FConn.Params.Add('Port=' + aPort);
   finally
     FBDriverLink.Free;
   end;

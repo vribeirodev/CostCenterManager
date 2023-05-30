@@ -5,17 +5,18 @@ uses
   MainForm in 'MainForm.pas' {FormMain},
   DBConn in 'services\DBConn.pas',
   LogUtils in 'services\LogUtils.pas',
-  Login in 'views\Login.pas' {FormLogin},
-  Layout in 'views\Layout.pas' {FormLayout},
-  DBConfig in 'views\DBConfig.pas' {FormDBConfig};
+  uLogin in 'views\uLogin.pas' {FormLogin},
+  uLayout in 'views\uLayout.pas' {FormLayout},
+  uDBConfig in 'views\uDBConfig.pas' {FormDBConfig},
+  DBConfig in 'services\DBConfig.pas' {$R *.res},
+  DBConfigController in 'controllers\DBConfigController.pas',
+  DBConfigFileHandler in 'services\DBConfigFileHandler.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TFormLogin, FormLogin);
-  Application.CreateForm(TFormLayout, FormLayout);
-  Application.CreateForm(TFormDBConfig, FormDBConfig);
   if true then
   begin
     Application.CreateForm(TFormMain, FormMain);
