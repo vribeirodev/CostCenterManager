@@ -103,7 +103,13 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="MainForm.pas">
-            <Form>Form1</Form>
+            <Form>FormMain</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="services\DBConn.pas"/>
+        <DCCReference Include="services\LogUtils.pas"/>
+        <DCCReference Include="views\Login.pas">
+            <Form>FormLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
