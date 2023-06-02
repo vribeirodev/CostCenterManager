@@ -4,14 +4,14 @@ interface
 
 uses
   System.JSON,
-  System.SysUtils,
-  DBConn,
-  System.IOUtils,
   System.Hash,
+  System.IOUtils,
+  System.SysUtils,
   Dialogs,
-  DBConfigFileHandler,
+  DBConn,
   DBConfig,
-  DBConfigValidator;
+  DBConfigValidator,
+  DBConfigFileHandler;
 
 type
   TDBConfigController = class
@@ -20,10 +20,13 @@ type
     const
       CONFIG_FILE_NAME = 'DBConfig.json';
       ERR_FIELDS_NOT_FILLED = 'Por favor, preencha todos os campos.';
+
   public
     constructor Create;
     destructor Destroy; override;
+
     procedure GravarConfiguracoes(DBConfig: TDBConfig);
+
     function TestarConexao(DBConfig: TDBConfig): Boolean;
     function LoadConfig: TDBConfig;
     function SelectDatabaseFile: String;
@@ -73,10 +76,11 @@ end;
 
 function TDBConfigController.TestarConexao(DBConfig: TDBConfig): Boolean;
 begin
-  TDBConn.ConfigurarConexao(DBConfig);
-  TDBConn.GetInstance;
+  TDBConn.SetConfig(DBConfig);
+  TDBConn.CreateConnection;
   Result := True;
 end;
+
 
 function TDBConfigController.LoadConfig: TDBConfig;
 begin

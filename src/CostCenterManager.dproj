@@ -104,21 +104,17 @@
         </DelphiCompile>
         <DCCReference Include="MainForm.pas">
             <Form>FormMain</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="services\DBConn.pas"/>
         <DCCReference Include="services\LogUtils.pas"/>
         <DCCReference Include="views\uLogin.pas">
             <Form>FormLogin</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="views\uLayout.pas">
             <Form>FormLayout</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="views\uDBConfig.pas">
             <Form>FormDBConfig</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="services\DBConfig.pas">
             <Form>$R *.res</Form>
@@ -127,6 +123,14 @@
         <DCCReference Include="services\DBConfigFileHandler.pas"/>
         <DCCReference Include="validators\DBConfigValidator.pas"/>
         <DCCReference Include="models\UserModel.pas"/>
+        <DCCReference Include="dao\UserDAO.pas"/>
+        <DCCReference Include="services\FDQueryFactory.pas"/>
+        <DCCReference Include="controllers\UserController.pas"/>
+        <DCCReference Include="validators\UserValidator.pas"/>
+        <DCCReference Include="services\Security.pas"/>
+        <DCCReference Include="dao\UserDAOIntf.pas"/>
+        <DCCReference Include="services\UserFactoryIntf.pas"/>
+        <DCCReference Include="services\UserFactory.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

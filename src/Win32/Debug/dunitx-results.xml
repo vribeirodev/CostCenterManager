@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<test-results name="C:\Users\Vinicius Ribeiro\Documents\Projetos\CostCenterManager\src\Win32\Debug\CostCenterManagerTest.exe" total="21" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2023-06-02" time="0.703">
+  <culture-info current-culture="en" current-uiculture="en" />
+  <test-suite type="Assembly" name="CostCenterManagerTest.exe" executed="true" result="Success" success="True" time="0.703" asserts="0">
+    <results>
+        <test-suite type="Namespace" name="UserModelTests" executed="true" result="Success" success="True" time="0.703" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TUserModelTests" executed="True" result="Success" success="True" time="0.703" >
+                <results>
+                  <test-case name="TestCreateUser" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestSetAndGetUsername" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestSetAndGetPassword" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestSetAndGetUserID" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="SecurityTests" executed="true" result="Success" success="True" time="0.690" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TSecurityTests" executed="True" result="Success" success="True" time="0.690" >
+                <results>
+                  <test-case name="TestHashPassword" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestIsHash" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="UserControllerTests" executed="true" result="Success" success="True" time="0.672" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TUserControllerTest" executed="True" result="Success" success="True" time="0.672" >
+                <results>
+                  <test-case name="CreateUser_WithValidParameters_ShouldReturnUserID" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="UpdateUser_WithValidParameters_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DeleteUser_ExistingUser_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="GetUser_WithValidID_ShouldReturnUser" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Authenticate_WithValidCredentials_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="UserValidatorTest" executed="true" result="Success" success="True" time="0.609" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TUserValidatorTest" executed="True" result="Success" success="True" time="0.609" >
+                <results>
+                  <test-case name="TestValidUser" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestUsernameEmpty" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestUsernameTooShort" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestPasswordEmpty" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestPasswordTooShort" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="UserDAOTest" executed="true" result="Success" success="True" time="0.566" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TUserDAOTest" executed="True" result="Success" success="True" time="0.566" >
+                <results>
+                  <test-case name="TestInsertAndSelect" executed="True" result="Success" success="True" time="0.294" asserts="0" />
+                  <test-case name="TestUpdate" executed="True" result="Success" success="True" time="0.052" asserts="0" />
+                  <test-case name="TestDelete" executed="True" result="Success" success="True" time="0.045" asserts="0" />
+                  <test-case name="TestGetAll" executed="True" result="Success" success="True" time="0.047" asserts="0" />
+                  <test-case name="TestSelectByUsername" executed="True" result="Success" success="True" time="0.093" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+    </results>
+  </test-suite>
+</test-results>

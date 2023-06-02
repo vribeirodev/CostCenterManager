@@ -3,11 +3,14 @@ unit DBConn;
 interface
 
 uses
-  FireDAC.Comp.Client,
+  FireDAC.DApt,
   FireDAC.Phys.FB,
+  FireDAC.Comp.UI,
+  FireDAC.Comp.Client,
   FireDAC.Stan.Def,
   FireDAC.Stan.Pool,
   FireDAC.Stan.Error,
+  FireDAC.Stan.Async,
   System.IOUtils,
   System.SysUtils,
   LogUtils,
@@ -16,74 +19,51 @@ uses
 type
   TDBConn = class
   private
-    class var FConn: TFDConnection;
-    class constructor Create;
-    class destructor Destroy;
+    class var FDBConfig: TDBConfig;
   public
-    class procedure ConfigurarConexao(const aDBConfig: TDBConfig);
-    class function GetInstance: TFDConnection;
+    class procedure SetConfig(const aDBConfig: TDBConfig);
+    class function CreateConnection: TFDConnection;
   end;
+
 implementation
 
-class constructor TDBConn.Create;
+class procedure TDBConn.SetConfig(const aDBConfig: TDBConfig);
 begin
-  FConn := TFDConnection.Create(nil);
+  FDBConfig := aDBConfig;
 end;
 
-class destructor TDBConn.Destroy;
-begin
-  if FConn.Connected then
-    FConn.Close;
-  FConn.Free;
-end;
-
-class procedure TDBConn.ConfigurarConexao(const aDBConfig: TDBConfig);
+class function TDBConn.CreateConnection: TFDConnection;
 const
   FBCLIENT_DLL = 'fbclient.dll';
 var
   FBDriverLink: TFDPhysFBDriverLink;
 begin
-  FBDriverLink:= TFDPhysFBDriverLink.Create(nil);
+  if FDBConfig = nil then
+    raise Exception.Create('DB Config não configurado');
 
+  FBDriverLink := TFDPhysFBDriverLink.Create(nil);
   try
     FBDriverLink.VendorLib := FBCLIENT_DLL;
 
-    FConn.Params.Clear;
-    FConn.Params.DriverID := 'FB';
+    Result := TFDConnection.Create(nil);
+    Result.Params.Clear;
+    Result.Params.DriverID := 'FB';
 
-    FConn.Params.Database := aDBConfig.Database;
-    FConn.Params.UserName := aDBConfig.Username;
-    FConn.Params.Password := aDBConfig.Password;
-    FConn.Params.Add('Server=' + aDBConfig.Server);
-    FConn.Params.Add('Port=' + aDBConfig.Port);
-    FConn.Params.Add('Protocol=TCPIP');
+    Result.Params.Database := FDBConfig.Database;
+    Result.Params.UserName := FDBConfig.Username;
+    Result.Params.Password := FDBConfig.Password;
+    Result.Params.Add('Server=' + FDBConfig.Server);
+    Result.Params.Add('Port=' + FDBConfig.Port);
+    Result.Params.Add('Protocol=TCPIP');
 
-    FConn.Params.Add('POOLING=true');
-    FConn.Params.Add('POOL_MAXIMUM_ITEMS=50');
-    FConn.Params.Add('POOL_CLEANUP_TIMEOUT=60');
-    FConn.Params.Add('POOL_EXPIRE_TIMEOUT=120');
+    Result.Params.Add('POOLING=true');
+    Result.Params.Add('POOL_MAXIMUM_ITEMS=50');
+    Result.Params.Add('POOL_CLEANUP_TIMEOUT=60');
+    Result.Params.Add('POOL_EXPIRE_TIMEOUT=120');
 
   finally
     FBDriverLink.Free;
   end;
-end;
-
-class function TDBConn.GetInstance: TFDConnection;
-begin
-  if not FConn.Connected then
-  begin
-    try
-      FConn.Open;
-    except
-      on E: EFDDBEngineException do
-      begin
-        TLogUtils.LogError(E.Message);
-        raise;
-      end;
-    end;
-  end;
-
-  Result := FConn;
 end;
 
 end.

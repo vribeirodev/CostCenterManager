@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8E540CF8-9CDB-4605-A9F0-07A459E7160F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CostCenterManager.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CostCenterManagerTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CostCenterManager">
+        <MSBuild Projects="CostCenterManager.dproj"/>
+    </Target>
+    <Target Name="CostCenterManager:Clean">
+        <MSBuild Projects="CostCenterManager.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CostCenterManager:Make">
+        <MSBuild Projects="CostCenterManager.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CostCenterManagerTest">
+        <MSBuild Projects="CostCenterManagerTest.dproj"/>
+    </Target>
+    <Target Name="CostCenterManagerTest:Clean">
+        <MSBuild Projects="CostCenterManagerTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CostCenterManagerTest:Make">
+        <MSBuild Projects="CostCenterManagerTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CostCenterManager;CostCenterManagerTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CostCenterManager:Clean;CostCenterManagerTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CostCenterManager:Make;CostCenterManagerTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

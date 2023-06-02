@@ -14,10 +14,10 @@ implementation
 
 class function TDBConfigValidator.AreFieldsValid(DBConfig: TDBConfig): Boolean;
 begin
-  Result := (DBConfig.Database <> '') and
-            (DBConfig.Username <> '') and
-            (DBConfig.Password <> '') and
-            (DBConfig.Server <> '') and
-            (DBConfig.Port <> '');
+  Result := (DBConfig.Database  <> '') and
+            (DBConfig.Username  <> '') and
+            (DBConfig.Password  <> '') and
+            (DBConfig.Server    <> '') and
+            (DBConfig.Port      <> '');
 end;
 end.

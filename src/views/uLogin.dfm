@@ -11485,6 +11485,7 @@ object FormLogin: TFormLogin
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        OnClick = btnConfirmarClick
         ExplicitLeft = 112
         ExplicitTop = 16
         ExplicitWidth = 23

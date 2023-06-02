@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.Buttons, uDBConfig;
+  Vcl.ExtCtrls, Vcl.Buttons, uDBConfig, UserController, UserModel, UserDAO,
+  UserFactory, UserDAOIntf, UserFactoryIntf, MainForm;
 
 type
   TFormLogin = class(TForm)
@@ -33,6 +34,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure btnConfigClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure btnConfirmarClick(Sender: TObject);
   private
     { Private declarations }
     procedure PositionPanel;
@@ -72,6 +74,40 @@ begin
     FormDBConfig.Free;
   end;
 end;
+
+procedure TFormLogin.btnConfirmarClick(Sender: TObject);
+var
+  FormMain : TFormMain;
+  UserController: TUserController;
+  UserDAO: IUserDAO;
+  UserFactory: IUserFactory;
+  User: TUser;
+  Authenticated: Boolean;
+begin
+  UserDAO := TUserDAO.Create;
+  UserFactory := TUserFactory.Create;
+  UserController := TUserController.Create(UserDAO, UserFactory);
+  User := TUser.Create(edtUsuario.Text, edtSenha.Text);
+
+  try
+    Authenticated := UserController.AuthenticateUser(User);
+  finally
+    UserController.Free;
+    User.Free;
+  end;
+
+  if Authenticated then
+  begin
+    Self.hide;
+    FormMain := TFormMain.Create(nil);
+    FormMain.ShowModal;
+  end
+  else
+  begin
+    ShowMessage('Usuário ou senha incorretos.');
+  end;
+end;
+
 
 procedure TFormLogin.btnFecharClick(Sender: TObject);
 begin
