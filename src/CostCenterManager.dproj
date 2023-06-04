@@ -131,6 +131,19 @@
         <DCCReference Include="dao\UserDAOIntf.pas"/>
         <DCCReference Include="services\UserFactoryIntf.pas"/>
         <DCCReference Include="services\UserFactory.pas"/>
+        <DCCReference Include="models\CentroCustoModel.pas"/>
+        <DCCReference Include="models\LancamentoModel.pas"/>
+        <DCCReference Include="services\ResumoObserverIntf.pas"/>
+        <DCCReference Include="services\ResumoCentroCustoPai.pas"/>
+        <DCCReference Include="services\ResumoCentroCustoFilho.pas"/>
+        <DCCReference Include="services\ResumoValorTotal.pas"/>
+        <DCCReference Include="services\Orcamento.pas"/>
+        <DCCReference Include="dao\CentroCustoDAO.pas"/>
+        <DCCReference Include="dao\CentroCustoDAOIntf.pas"/>
+        <DCCReference Include="dao\LancamentoDAOIntf.pas"/>
+        <DCCReference Include="dao\LancamentoDAO.pas"/>
+        <DCCReference Include="controllers\LancamentoController.pas"/>
+        <DCCReference Include="controllers\CentroCustoController.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

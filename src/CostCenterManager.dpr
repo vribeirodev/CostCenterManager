@@ -23,7 +23,20 @@ uses
   FireDAC.Comp.UI,
   FireDAC.VCLUI.Wait,
   UserFactoryIntf in 'services\UserFactoryIntf.pas',
-  UserFactory in 'services\UserFactory.pas';
+  UserFactory in 'services\UserFactory.pas',
+  CentroCustoModel in 'models\CentroCustoModel.pas',
+  LancamentoModel in 'models\LancamentoModel.pas',
+  ResumoObserverIntf in 'services\ResumoObserverIntf.pas',
+  ResumoCentroCustoPai in 'services\ResumoCentroCustoPai.pas',
+  ResumoCentroCustoFilho in 'services\ResumoCentroCustoFilho.pas',
+  ResumoValorTotal in 'services\ResumoValorTotal.pas',
+  Orcamento in 'services\Orcamento.pas',
+  CentroCustoDAO in 'dao\CentroCustoDAO.pas',
+  CentroCustoDAOIntf in 'dao\CentroCustoDAOIntf.pas',
+  LancamentoDAOIntf in 'dao\LancamentoDAOIntf.pas',
+  LancamentoDAO in 'dao\LancamentoDAO.pas',
+  LancamentoController in 'controllers\LancamentoController.pas',
+  CentroCustoController in 'controllers\CentroCustoController.pas';
 
 {$R *.res}
 

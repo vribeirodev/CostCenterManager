@@ -17,7 +17,16 @@ uses
   UserDAOTest in 'tests\UserDAOTest.pas',
   UserValidatorTest in 'tests\UserValidatorTest.pas',
   SecurityTests in 'tests\SecurityTests.pas',
-  UserControllerTests in 'tests\UserControllerTests.pas';
+  UserControllerTests in 'tests\UserControllerTests.pas',
+  CentroCustoModelTests in 'tests\CentroCustoModelTests.pas',
+  LancamentoModelTests in 'tests\LancamentoModelTests.pas',
+  ResumoCentroCustoPaiTests in 'tests\ResumoCentroCustoPaiTests.pas',
+  ResumoCentroCustoFilhoTests in 'tests\ResumoCentroCustoFilhoTests.pas',
+  ResumoValorTotalTests in 'tests\ResumoValorTotalTests.pas',
+  OrcamentoTests in 'tests\OrcamentoTests.pas',
+  CentroCustoDAOTests in 'tests\CentroCustoDAOTests.pas',
+  LancamentoDAOTests in 'tests\LancamentoDAOTests.pas',
+  CentroCustoControllerTests in 'tests\CentroCustoControllerTests.pas';
 
 {$IFNDEF TESTINSIGHT}
 var

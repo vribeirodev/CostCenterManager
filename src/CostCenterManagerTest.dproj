@@ -96,6 +96,15 @@
         <DCCReference Include="tests\UserValidatorTest.pas"/>
         <DCCReference Include="tests\SecurityTests.pas"/>
         <DCCReference Include="tests\UserControllerTests.pas"/>
+        <DCCReference Include="tests\CentroCustoModelTests.pas"/>
+        <DCCReference Include="tests\LancamentoModelTests.pas"/>
+        <DCCReference Include="tests\ResumoCentroCustoPaiTests.pas"/>
+        <DCCReference Include="tests\ResumoCentroCustoFilhoTests.pas"/>
+        <DCCReference Include="tests\ResumoValorTotalTests.pas"/>
+        <DCCReference Include="tests\OrcamentoTests.pas"/>
+        <DCCReference Include="tests\CentroCustoDAOTests.pas"/>
+        <DCCReference Include="tests\LancamentoDAOTests.pas"/>
+        <DCCReference Include="tests\CentroCustoControllerTests.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
