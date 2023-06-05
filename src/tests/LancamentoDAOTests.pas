@@ -39,7 +39,7 @@ begin
   TDBConn.SetConfig(DBConfig);
 
   FLancamentoDAO := TLancamentoDAO.Create;
-  FLancamento := TLancamento.Create(1, 10, 1001, 100.0);
+  FLancamento := TLancamento.Create(1, 10, 1001, 1, 100.0);
 end;
 
 procedure TLancamentoDAOTest.TearDown;

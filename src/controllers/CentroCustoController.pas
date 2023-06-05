@@ -19,7 +19,8 @@ type
     function Delete(CentroCusto: TCentroCusto): Boolean;
     function Select(CodigoPai: Integer; CodigoFilho: Integer): TCentroCusto;
     function GetAll: TObjectList<TCentroCusto>;
-  end;
+    function GetByOrcamentoId(OrcamentoId: Integer): TObjectList<TCentroCusto>;
+end;
 
 implementation
 
@@ -51,6 +52,11 @@ end;
 function TCentroCustoController.GetAll: TObjectList<TCentroCusto>;
 begin
   Result := FCentroCustoDAO.GetAll;
+end;
+
+function TCentroCustoController.GetByOrcamentoId(OrcamentoId: Integer): TObjectList<TCentroCusto>;
+begin
+  Result := FCentroCustoDAO.GetByOrcamentoId(OrcamentoId);
 end;
 
 end.

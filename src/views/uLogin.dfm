@@ -65,11 +65,11 @@ object FormLogin: TFormLogin
       ParentBackground = False
       TabOrder = 0
       object lblBemVindo: TLabel
-        Left = 69
+        Left = 98
         Top = 56
-        Width = 296
+        Width = 270
         Height = 31
-        Caption = 'Bem vindo ao OrderManager'
+        Caption = 'Bem vindo ao CC Manager'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 11645361
         Font.Height = -23

@@ -35,8 +35,8 @@ var
   CentroCusto: TCentroCusto;
 begin
   Orcamento := TOrcamento.Create;
-  CentroCusto := TCentroCusto.Create(1, 1000);
-  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 1000, 50.0));
+  CentroCusto := TCentroCusto.Create(1, 1000, 1);
+  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 1000, 1, 50.0));
 
   Orcamento.AdicionarCentroCusto(CentroCusto);
 
@@ -71,8 +71,8 @@ begin
   Observador1 := TResumoCentroCustoPai.Create;
   Observador2 := TResumoCentroCustoFilho.Create;
 
-  CentroCusto := TCentroCusto.Create(1, 1000);
-  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 1000, 50.0));
+  CentroCusto := TCentroCusto.Create(1, 1000, 1);
+  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 1000, 1, 50.0));
 
   Orcamento.AdicionarObservador(Observador1);
   Orcamento.AdicionarObservador(Observador2);

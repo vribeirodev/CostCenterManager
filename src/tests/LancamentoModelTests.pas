@@ -14,15 +14,15 @@ type
     [Test]
     procedure TestCreateLancamento;
     [Test]
-    [TestCase('Test1','1, 50, 2000, 1000')]
-    [TestCase('Test2','2, 99, 9999, 5000')]
-    procedure TestValidValues(const AId, ACodigoPai, ACodigoFilho: Integer; const AValor: Real);
+    [TestCase('Test1','50, 2000, 1, 1000')]
+    [TestCase('Test2','99, 9999, 1, 5000')]
+    procedure TestValidValues(const ACodigoPai, ACodigoFilho, AIDOrcamento: Integer; const AValor: Real);
     [Test]
-    [TestCase('Test1','-1, 50, 2000, 1000')]
-    [TestCase('Test2','1, -50, 2000, 1000')]
-    [TestCase('Test3','1, 50, -2000, 1000')]
-    [TestCase('Test4','1, 50, 2000, -1000')]
-    procedure TestInvalidValues(const AId, ACodigoPai, ACodigoFilho: Integer; const AValor: Real);
+    [TestCase('Test1','1, 50, 2000, 1, -1000')]
+    [TestCase('Test2','1, -50, 2000, 1, 1000')]
+    [TestCase('Test3','1, 50, -2000, 1, 1000')]
+    procedure TestInvalidValues(const AId, ACodigoPai, ACodigoFilho, AIDOrcamento: Integer; const AValor: Real);
+
   end;
 
 implementation
@@ -39,27 +39,27 @@ begin
   end;
 end;
 
-procedure TTestLancamentoModel.TestValidValues(const AId, ACodigoPai, ACodigoFilho: Integer; const AValor: Real);
+procedure TTestLancamentoModel.TestValidValues(const ACodigoPai, ACodigoFilho, AIDOrcamento: Integer; const AValor: Real);
 var
   Lancamento: TLancamento;
 begin
-  Lancamento := TLancamento.Create(AId, ACodigoPai, ACodigoFilho, AValor);
+  Lancamento := TLancamento.Create(ACodigoPai, ACodigoFilho, AValor, AIDOrcamento);
   try
-    Assert.AreEqual(AId, Lancamento.Id);
     Assert.AreEqual(ACodigoPai, Lancamento.CodigoPai);
     Assert.AreEqual(ACodigoFilho, Lancamento.CodigoFilho);
     Assert.AreEqual(AValor, Lancamento.Valor);
+    Assert.AreEqual(0, Lancamento.IdOrcamento); // Mudança aqui
   finally
     Lancamento.Free;
   end;
 end;
 
-procedure TTestLancamentoModel.TestInvalidValues(const AId, ACodigoPai, ACodigoFilho: Integer; const AValor: Real);
+procedure TTestLancamentoModel.TestInvalidValues(const AId, ACodigoPai, ACodigoFilho, AIDOrcamento: Integer; const AValor: Real);
 begin
   Assert.WillRaise(
     procedure
     begin
-      TLancamento.Create(AId, ACodigoPai, ACodigoFilho, AValor);
+      TLancamento.Create(AId, ACodigoPai, ACodigoFilho, AIDOrcamento, AValor);
     end, Exception, 'Deve lançar exceção quando os valores são inválidos');
 end;
 

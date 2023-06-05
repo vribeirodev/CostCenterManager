@@ -8,15 +8,18 @@ uses
   CentroCustoDAO,
   System.Generics.Collections,
   DBConn,
-  DBConfig;
+  DBConfig,
+  OrcamentoDAO,
+  OrcamentoModel;
 
 type
-
   [TestFixture]
   TCentroCustoDAOTest = class(TObject)
   private
     FCentroCustoDAO: TCentroCustoDAO;
+    FOrcamentoDAO: TOrcamentoDAO;  // Adicione uma variável para o DAO de orçamento
     FCentroCusto: TCentroCusto;
+    FOrcamentos: TObjectList<TOrcamentoModel>;  // Alterado para uma lista de orçamentos
     DBConfig: TDBConfig;
   public
     [Setup]
@@ -46,30 +49,33 @@ begin
 
   TDBConn.SetConfig(DBConfig);
 
+  FOrcamentoDAO := TOrcamentoDAO.Create;  // Crie o DAO de orçamento
   FCentroCustoDAO := TCentroCustoDAO.Create;
 
-  // Cria alguns registros de teste
-  FCentroCustoDAO.Insert(TCentroCusto.Create(10, 2000));
-  FCentroCustoDAO.Insert(TCentroCusto.Create(20, 3000));
-  FCentroCustoDAO.Insert(TCentroCusto.Create(30, 4000));
+  FOrcamentos := TObjectList<TOrcamentoModel>.Create;  // Inicie a lista de orçamentos
 
-  FCentroCusto := TCentroCusto.Create(40, 2000);
+  // Crie e insira alguns registros de orçamento
+  FOrcamentos.Add(FOrcamentoDAO.Insert); // Insere um orçamento e adiciona na lista
+  FOrcamentos.Add(FOrcamentoDAO.Insert); // Repita para cada ID de orçamento necessário
+  FOrcamentos.Add(FOrcamentoDAO.Insert);
+  FOrcamentos.Add(FOrcamentoDAO.Insert);
+
+  // Agora, você pode criar e inserir os registros de CentroCusto com segurança
+  FCentroCustoDAO.Insert(TCentroCusto.Create(10, 2000, FOrcamentos[0].Id));
+  FCentroCustoDAO.Insert(TCentroCusto.Create(20, 3000, FOrcamentos[1].Id));
+  FCentroCustoDAO.Insert(TCentroCusto.Create(30, 4000, FOrcamentos[2].Id));
+
+  FCentroCusto := TCentroCusto.Create(40, 2000, FOrcamentos[3].Id);
 end;
-
-
 
 procedure TCentroCustoDAOTest.TearDown;
 begin
-  // Remove registros de teste
-  FCentroCustoDAO.Delete(TCentroCusto.Create(10, 2000));
-  FCentroCustoDAO.Delete(TCentroCusto.Create(20, 3000));
-  FCentroCustoDAO.Delete(TCentroCusto.Create(30, 4000));
-
+  // Libere a lista de orçamentos
+  FOrcamentos.Free;
   FCentroCustoDAO.Free;
-  FCentroCusto.Free;
+  FOrcamentoDAO.Free;  // Não esqueça de liberar o DAO de orçamento
   DBConfig.Free;
 end;
-
 
 procedure TCentroCustoDAOTest.TestInsertAndSelect;
 var
@@ -84,6 +90,7 @@ begin
     Assert.IsNotNull(NewCentroCusto, 'Failed on Select');
     Assert.AreEqual(FCentroCusto.CodigoPai, NewCentroCusto.CodigoPai, 'CodigoPai does not match');
     Assert.AreEqual(FCentroCusto.CodigoFilho, NewCentroCusto.CodigoFilho, 'CodigoFilho does not match');
+    Assert.AreEqual(FCentroCusto.IdOrcamento, NewCentroCusto.IdOrcamento, 'IdOrcamento does not match');  // Verifica a igualdade do campo IdOrcamento
   finally
     NewCentroCusto.Free;
   end;

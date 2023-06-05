@@ -39,7 +39,7 @@ begin
   FCentroCustoDAOMock := TMock<ICentroCustoDAO>.Create;
 
 
-  TestCentroCusto := TCentroCusto.Create(1, 1000);
+  TestCentroCusto := TCentroCusto.Create(1, 1000, 1);
 
   // Configurar o mock para retornar os valores esperados
   FCentroCustoDAOMock.Setup.WillReturn(True).When.Insert(TestCentroCusto);

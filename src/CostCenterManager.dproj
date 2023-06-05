@@ -102,9 +102,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MainForm.pas">
-            <Form>FormMain</Form>
-        </DCCReference>
         <DCCReference Include="services\DBConn.pas"/>
         <DCCReference Include="services\LogUtils.pas"/>
         <DCCReference Include="views\uLogin.pas">
@@ -144,6 +141,25 @@
         <DCCReference Include="dao\LancamentoDAO.pas"/>
         <DCCReference Include="controllers\LancamentoController.pas"/>
         <DCCReference Include="controllers\CentroCustoController.pas"/>
+        <DCCReference Include="models\OrcamentoModel.pas"/>
+        <DCCReference Include="dao\OrcamentoDAO.pas"/>
+        <DCCReference Include="dao\OrcamentoDAOIntf.pas"/>
+        <DCCReference Include="views\uFormConsulta.pas">
+            <Form>FormConsulta</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\uFormOrcamento.pas">
+            <Form>FormOrcamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uFormPrincipal.pas">
+            <Form>FormPrincipal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\uUser.pas">
+            <Form>FormUser</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

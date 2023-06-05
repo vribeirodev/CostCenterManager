@@ -58,6 +58,7 @@ function TDBConfigFileHandler.LoadFromFile: TDBConfig;
 var
   JSONObj: TJSONObject;
   JSONValue: TJSONValue;
+  DBConfig: TDBConfig;
 begin
    Result := TDBConfig.Create('','','','','');
 
@@ -82,6 +83,18 @@ begin
     finally
       JSONObj.Free;
     end;
+  end
+  else
+  begin
+    DBConfig := TDBConfig.Create('','','','','');
+    DBConfig.Database := TPath.Combine(TPath.GetDirectoryName(ExtractFilePath(ParamStr(0))), '..\database\database.fdb');
+    DBConfig.Username := 'sysdba';
+    DBConfig.Password := 'masterkey';
+    DBConfig.Server   := 'localhost';
+    DBConfig.Port     := '3050';
+
+    Self.SaveToFile(DBConfig);
+    Result:= DBConfig;
   end;
 end;
 

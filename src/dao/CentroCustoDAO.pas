@@ -12,14 +12,14 @@ uses
   System.Generics.Collections;
 
 const
-  SQL_INSERT_CENTROCUSTO = 'INSERT INTO "CENTROCUSTO" ("CODIGO_PAI", "CODIGO_FILHO") VALUES (:CODIGO_PAI, :CODIGO_FILHO)';
-  SQL_UPDATE_CENTROCUSTO = 'UPDATE "CENTROCUSTO" SET "CODIGO_PAI" = :CODIGO_PAI, "CODIGO_FILHO" = :CODIGO_FILHO WHERE "CODIGO_PAI" = :CODIGO_PAI AND "CODIGO_FILHO" = :CODIGO_FILHO';
+  SQL_INSERT_CENTROCUSTO = 'INSERT INTO "CENTROCUSTO" ("CODIGO_PAI", "CODIGO_FILHO", "ID_ORCAMENTO") VALUES (:CODIGO_PAI, :CODIGO_FILHO, :ID_ORCAMENTO)';
+  SQL_UPDATE_CENTROCUSTO = 'UPDATE "CENTROCUSTO" SET "CODIGO_PAI" = :CODIGO_PAI, "CODIGO_FILHO" = :CODIGO_FILHO, "ID_ORCAMENTO" = :ID_ORCAMENTO WHERE "CODIGO_PAI" = :CODIGO_PAI AND "CODIGO_FILHO" = :CODIGO_FILHO';
   SQL_DELETE_CENTROCUSTO = 'DELETE FROM "CENTROCUSTO" WHERE "CODIGO_PAI" = :CODIGO_PAI AND "CODIGO_FILHO" = :CODIGO_FILHO';
-  SQL_SELECT_CENTROCUSTO = 'SELECT "CODIGO_PAI", "CODIGO_FILHO" FROM "CENTROCUSTO" WHERE "CODIGO_PAI" = :CODIGO_PAI AND "CODIGO_FILHO" = :CODIGO_FILHO';
-  SQL_SELECT_ALL_CENTROCUSTOS = 'SELECT "CODIGO_PAI", "CODIGO_FILHO" FROM "CENTROCUSTO"';
-
+  SQL_SELECT_CENTROCUSTO = 'SELECT "CODIGO_PAI", "CODIGO_FILHO", "ID_ORCAMENTO" FROM "CENTROCUSTO" WHERE "CODIGO_PAI" = :CODIGO_PAI AND "CODIGO_FILHO" = :CODIGO_FILHO';
+  SQL_SELECT_ALL_CENTROCUSTOS = 'SELECT "CODIGO_PAI", "CODIGO_FILHO", "ID_ORCAMENTO" FROM "CENTROCUSTO"';
+  SQL_SELECT_BY_ORCAMENTO_ID = 'SELECT "CODIGO_PAI", "CODIGO_FILHO", "ID_ORCAMENTO" FROM "CENTROCUSTO" WHERE "ID_ORCAMENTO" = :ORCAMENTO_ID';
 type
-   TCentroCustoDAO = class(TInterfacedObject, ICentroCustoDAO)
+  TCentroCustoDAO = class(TInterfacedObject, ICentroCustoDAO)
   private
     function CentroCustoFromQuery(Query: TFDQuery): TCentroCusto;
   public
@@ -28,6 +28,7 @@ type
     function Delete(CentroCusto: TCentroCusto): Boolean;
     function Select(CodigoPai: Integer; CodigoFilho: Integer): TCentroCusto;
     function GetAll: TObjectList<TCentroCusto>;
+    function GetByOrcamentoId(OrcamentoId: Integer): TObjectList<TCentroCusto>;
   end;
 
 implementation
@@ -36,7 +37,8 @@ function TCentroCustoDAO.CentroCustoFromQuery(Query: TFDQuery): TCentroCusto;
 begin
   Result := TCentroCusto.Create(
     Query.FieldByName('CODIGO_PAI').AsInteger,
-    Query.FieldByName('CODIGO_FILHO').AsInteger
+    Query.FieldByName('CODIGO_FILHO').AsInteger,
+    Query.FieldByName('ID_ORCAMENTO').AsInteger
   );
 end;
 
@@ -49,6 +51,7 @@ begin
     Query.SQL.Text := SQL_INSERT_CENTROCUSTO;
     Query.ParamByName('CODIGO_PAI').AsInteger := CentroCusto.CodigoPai;
     Query.ParamByName('CODIGO_FILHO').AsInteger := CentroCusto.CodigoFilho;
+    Query.ParamByName('ID_ORCAMENTO').AsInteger := CentroCusto.IdOrcamento;
     Query.ExecSQL;
     Result := Query.RowsAffected > 0;
   finally
@@ -65,6 +68,7 @@ begin
     Query.SQL.Text := SQL_UPDATE_CENTROCUSTO;
     Query.ParamByName('CODIGO_PAI').AsInteger := CentroCusto.CodigoPai;
     Query.ParamByName('CODIGO_FILHO').AsInteger := CentroCusto.CodigoFilho;
+    Query.ParamByName('ID_ORCAMENTO').AsInteger := CentroCusto.IdOrcamento;
     Query.ExecSQL;
     Result := Query.RowsAffected > 0;
   finally
@@ -116,6 +120,28 @@ begin
   Query := TFDQueryFactory.CreateQuery;
   try
     Query.SQL.Text := SQL_SELECT_ALL_CENTROCUSTOS;
+    Query.Open;
+    while not Query.Eof do
+    begin
+      CentroCusto := CentroCustoFromQuery(Query);
+      Result.Add(CentroCusto);
+      Query.Next;
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+function TCentroCustoDAO.GetByOrcamentoId(OrcamentoId: Integer): TObjectList<TCentroCusto>;
+var
+  Query: TFDQuery;
+  CentroCusto: TCentroCusto;
+begin
+  Result := TObjectList<TCentroCusto>.Create;
+  Query := TFDQueryFactory.CreateQuery;
+  try
+    Query.SQL.Text := SQL_SELECT_BY_ORCAMENTO_ID;
+    Query.ParamByName('ORCAMENTO_ID').AsInteger := OrcamentoId;
     Query.Open;
     while not Query.Eof do
     begin

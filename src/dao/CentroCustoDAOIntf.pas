@@ -15,6 +15,7 @@ type
     function Delete(CentroCusto: TCentroCusto): Boolean;
     function Select(CodigoPai: Integer; CodigoFilho: Integer): TCentroCusto;
     function GetAll: TObjectList<TCentroCusto>;
+    function GetByOrcamentoId(OrcamentoId: Integer): TObjectList<TCentroCusto>;
   end;
 
 implementation

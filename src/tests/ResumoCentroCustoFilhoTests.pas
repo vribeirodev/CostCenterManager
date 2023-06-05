@@ -28,8 +28,8 @@ var
   CentroCusto: TCentroCusto;
 begin
   Resumo := TResumoCentroCustoFilho.Create;
-  CentroCusto := TCentroCusto.Create(1, 2000);
-  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 2000, 100.0));
+  CentroCusto := TCentroCusto.Create(1, 2000, 1);
+  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 2000, 1, 100.0));
 
   Resumo.Atualizar(CentroCusto);
 
@@ -45,9 +45,9 @@ var
   CentroCusto: TCentroCusto;
 begin
   Resumo := TResumoCentroCustoFilho.Create;
-  CentroCusto := TCentroCusto.Create(1, 2000);
-  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 2000, 100.0));
-  CentroCusto.AdicionarLancamento(TLancamento.Create(2, 1, 2000, 200.0));
+  CentroCusto := TCentroCusto.Create(1, 2000, 1);
+  CentroCusto.AdicionarLancamento(TLancamento.Create(1, 1, 2000, 1, 100.0));
+  CentroCusto.AdicionarLancamento(TLancamento.Create(2, 1, 2000, 1, 200.0));
 
   Resumo.Atualizar(CentroCusto);
 
@@ -63,10 +63,10 @@ var
   CentroCusto1, CentroCusto2: TCentroCusto;
 begin
   Resumo := TResumoCentroCustoFilho.Create;
-  CentroCusto1 := TCentroCusto.Create(1, 2000);
-  CentroCusto2 := TCentroCusto.Create(1, 3000);
-  CentroCusto1.AdicionarLancamento(TLancamento.Create(1, 1, 2000, 100.0));
-  CentroCusto2.AdicionarLancamento(TLancamento.Create(2, 1, 3000, 200.0));
+  CentroCusto1 := TCentroCusto.Create(1, 2000, 1);
+  CentroCusto2 := TCentroCusto.Create(1, 3000, 1);
+  CentroCusto1.AdicionarLancamento(TLancamento.Create(1, 1, 2000, 1, 100.0));
+  CentroCusto2.AdicionarLancamento(TLancamento.Create(2, 1, 3000, 1, 200.0));
 
   Resumo.Atualizar(CentroCusto1);
 

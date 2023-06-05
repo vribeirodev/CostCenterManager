@@ -19,6 +19,8 @@ type
     procedure AdicionarCentroCusto(const centroCusto: TCentroCusto);
     procedure AdicionarObservador(const observador: IResumoObserver);
     procedure Notificar(const centroCusto: TCentroCusto);
+    procedure ClearCentrosCustos;
+    procedure AddCentrosCustos(const Value: TDictionary<string, TCentroCusto>);
 
     property Observadores: TList<IResumoObserver> read FObservadores;
     property CentrosCustos: TDictionary<string, TCentroCusto> read FCentrosCustos;
@@ -56,5 +58,19 @@ begin
   for Observador in FObservadores do
     Observador.Atualizar(centroCusto);
 end;
+
+procedure TOrcamento.ClearCentrosCustos;
+begin
+  FCentrosCustos.Clear;
+end;
+
+procedure TOrcamento.AddCentrosCustos(const Value: TDictionary<string, TCentroCusto>);
+var
+  Pair: TPair<string, TCentroCusto>;
+begin
+  for Pair in Value do
+    FCentrosCustos.Add(Pair.Key, Pair.Value);
+end;
+
 
 end.

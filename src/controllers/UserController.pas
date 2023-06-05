@@ -11,7 +11,8 @@ uses
   System.Hash,
   System.Classes,
   System.SysUtils,
-  FireDAC.Comp.UI;
+  FireDAC.Comp.UI,
+  System.Generics.Collections;
 
 type
   TUserController = class
@@ -26,6 +27,9 @@ type
     function UpdateUser (User   : TUser)    : Boolean;
     function DeleteUser (User   : TUser)    : Boolean;
     function GetUser    (UserID : Integer)  : TUser;
+    function GetAllUsers: TObjectList<TUser>;
+
+
 
     function AuthenticateUser(User: TUser): Boolean;
   end;
@@ -42,6 +46,11 @@ end;
 destructor TUserController.Destroy;
 begin
   inherited;
+end;
+
+function TUserController.GetAllUsers: TObjectList<TUser>;
+begin
+  Result := FDAO.GetAll;
 end;
 
 function TUserController.CreateUser(const Username, Password: string): Integer;

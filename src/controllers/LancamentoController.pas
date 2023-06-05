@@ -6,7 +6,8 @@ uses
   LancamentoModel,
   LancamentoDAOIntf,
   System.SysUtils,
-  System.Generics.Collections;
+  System.Generics.Collections,
+  CentroCustoModel;
 
 type
   TLancamentoController = class
@@ -19,9 +20,15 @@ type
     function Delete(Lancamento: TLancamento): Boolean;
     function Select(LancamentoID: Integer): TLancamento;
     function GetAll: TObjectList<TLancamento>;
-  end;
+    function GetByCentroCusto(CentroCusto: TCentroCusto): TObjectList<TLancamento>;
+end;
 
 implementation
+
+function TLancamentoController.GetByCentroCusto(CentroCusto: TCentroCusto): TObjectList<TLancamento>;
+begin
+  Result := FLancamentoDAO.GetByCentroCusto(CentroCusto);
+end;
 
 constructor TLancamentoController.Create(LancamentoDAO: ILancamentoDAO);
 begin

@@ -4,7 +4,8 @@ interface
 
 uses
   LancamentoModel,
-  System.Generics.Collections;
+  System.Generics.Collections,
+  CentroCustoModel;
 
 type
   ILancamentoDAO = interface
@@ -14,6 +15,8 @@ type
     function Delete(Lancamento: TLancamento): Boolean;
     function Select(LancamentoID: Integer): TLancamento;
     function GetAll: TObjectList<TLancamento>;
+    function GetByCentroCusto(CentroCusto: TCentroCusto): TObjectList<TLancamento>;
+
   end;
 
 implementation

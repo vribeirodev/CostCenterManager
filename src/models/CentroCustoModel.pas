@@ -5,20 +5,23 @@ interface
 uses
   System.Generics.Collections,
   System.SysUtils,
-  LancamentoModel;  // Unidade onde o TLancamento é definido
+  LancamentoModel;
 
 type
   TCentroCusto = class
   private
     FCodigoPai: Integer;
     FCodigoFilho: Integer;
+    FIdOrcamento: Integer;
     FLancamentos: TObjectList<TLancamento>;
   public
     property CodigoPai: Integer read FCodigoPai write FCodigoPai;
     property CodigoFilho: Integer read FCodigoFilho write FCodigoFilho;
+    property IdOrcamento: Integer read FIdOrcamento write FIdOrcamento;
     property Lancamentos: TObjectList<TLancamento> read FLancamentos;
 
-    constructor Create(const CodigoPai, CodigoFilho: Integer);
+    constructor Create(const CodigoPai, CodigoFilho, IdOrcamento: Integer); overload;
+    constructor Create(const CodigoPai, CodigoFilho: Integer); overload;
     destructor Destroy; override;
     function GetCodigoCompleto: string;
     function GetValorTotal: Real;
@@ -28,16 +31,22 @@ type
 
 implementation
 
-constructor TCentroCusto.Create(const CodigoPai, CodigoFilho: Integer);
+constructor TCentroCusto.Create(const CodigoPai, CodigoFilho, IdOrcamento: Integer);
 begin
   if (CodigoPai < 1) or (CodigoPai > 99) then
     raise Exception.Create('Código de centro de custo pai inválido.');
-  if (CodigoFilho < 1000) or (CodigoFilho > 9999) then
+  if (CodigoFilho < 1) or (CodigoFilho > 9999) then
     raise Exception.Create('Código de centro de custo filho inválido.');
 
   FCodigoPai := CodigoPai;
   FCodigoFilho := CodigoFilho;
+  FIdOrcamento := IdOrcamento;
   FLancamentos := TObjectList<TLancamento>.Create;
+end;
+
+constructor TCentroCusto.Create(const CodigoPai, CodigoFilho: Integer);
+begin
+  Create(CodigoPai, CodigoFilho, 0);
 end;
 
 destructor TCentroCusto.Destroy;
@@ -48,15 +57,8 @@ end;
 
 procedure TCentroCusto.AdicionarLancamento(const Lancamento: TLancamento);
 begin
-  if Lancamento.CodigoPai <> FCodigoPai then
-    raise Exception.Create('O lançamento não corresponde ao código pai deste centro de custo.');
-
-  if Lancamento.CodigoFilho <> FCodigoFilho then
-    raise Exception.Create('O lançamento não corresponde ao código filho deste centro de custo.');
-
   FLancamentos.Add(Lancamento);
 end;
-
 
 function TCentroCusto.GetCodigoCompleto: string;
 begin

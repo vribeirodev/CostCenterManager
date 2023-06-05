@@ -1,33 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<test-results name="C:\Users\Vinicius Ribeiro\Documents\Projetos\CostCenterManager\src\Win32\Debug\CostCenterManagerTest.exe" total="55" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2023-06-03" time="5.860">
+<test-results name="C:\Users\Vinicius Ribeiro\Documents\Projetos\CostCenterManager\src\Win32\Debug\CostCenterManagerTest.exe" total="49" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2023-06-05" time="3.124">
   <culture-info current-culture="en" current-uiculture="en" />
-  <test-suite type="Assembly" name="CostCenterManagerTest.exe" executed="true" result="Success" success="True" time="5.860" asserts="0">
+  <test-suite type="Assembly" name="CostCenterManagerTest.exe" executed="true" result="Success" success="True" time="3.124" asserts="0">
     <results>
-        <test-suite type="Namespace" name="ResumoCentroCustoFilhoTests" executed="true" result="Success" success="True" time="5.860" asserts="0" >
+        <test-suite type="Namespace" name="UserModelTests" executed="true" result="Success" success="True" time="3.124" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TResumoCentroCustoFilhoTests" executed="True" result="Success" success="True" time="5.860" >
+              <test-suite type="Fixture" name="TUserModelTests" executed="True" result="Success" success="True" time="3.124" >
                 <results>
-                  <test-case name="Atualizar_DeveIncrementarOValorResumo" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Atualizar_ComMultiplosLancamentos_DeveSomarValores" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Atualizar_ComLancamentosDeCentrosCustosDiferentes_DeveIgnorarCentrosCustosDiferentes" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestCreateUser" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestSetAndGetUsername" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestSetAndGetPassword" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestSetAndGetUserID" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="OrcamentoTests" executed="true" result="Success" success="True" time="5.852" asserts="0" >
+        <test-suite type="Namespace" name="UserDAOTest" executed="true" result="Success" success="True" time="3.111" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TOrcamentoTests" executed="True" result="Success" success="True" time="5.852" >
+              <test-suite type="Fixture" name="TUserDAOTest" executed="True" result="Success" success="True" time="3.111" >
                 <results>
-                  <test-case name="AdicionarCentroCusto_DeveAdicionarCentroCustoNaLista" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="AdicionarObservador_DeveAdicionarObservadorNaLista" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Notificar_DeveAtualizarTodosObservadores" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestInsertAndSelect" executed="True" result="Success" success="True" time="0.287" asserts="0" />
+                  <test-case name="TestUpdate" executed="True" result="Success" success="True" time="0.094" asserts="0" />
+                  <test-case name="TestDelete" executed="True" result="Success" success="True" time="0.073" asserts="0" />
+                  <test-case name="TestGetAll" executed="True" result="Success" success="True" time="0.066" asserts="0" />
+                  <test-case name="TestSelectByUsername" executed="True" result="Success" success="True" time="0.132" asserts="0" />
                 </results>
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="UserValidatorTest" executed="true" result="Success" success="True" time="5.822" asserts="0" >
+        <test-suite type="Namespace" name="UserValidatorTest" executed="true" result="Success" success="True" time="2.409" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TUserValidatorTest" executed="True" result="Success" success="True" time="5.822" >
+              <test-suite type="Fixture" name="TUserValidatorTest" executed="True" result="Success" success="True" time="2.409" >
                 <results>
                   <test-case name="TestValidUser" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="TestUsernameEmpty" executed="True" result="Success" success="True" time="0.000" asserts="0" />
@@ -38,9 +41,35 @@
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="UserControllerTests" executed="true" result="Success" success="True" time="5.775" asserts="0" >
+        <test-suite type="Namespace" name="CentroCustoDAOTests" executed="true" result="Success" success="True" time="2.362" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TUserControllerTest" executed="True" result="Success" success="True" time="5.775" >
+              <test-suite type="Fixture" name="TCentroCustoDAOTest" executed="True" result="Success" success="True" time="2.362" >
+                <results>
+                  <test-case name="TestInsertAndSelect" executed="True" result="Success" success="True" time="0.103" asserts="0" />
+                  <test-case name="TestUpdate" executed="True" result="Success" success="True" time="0.051" asserts="0" />
+                  <test-case name="TestDelete" executed="True" result="Success" success="True" time="0.058" asserts="0" />
+                  <test-case name="TestGetAll" executed="True" result="Success" success="True" time="0.057" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="LancamentoModelTests" executed="true" result="Success" success="True" time="0.245" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TTestLancamentoModel" executed="True" result="Success" success="True" time="0.245" >
+                <results>
+                  <test-case name="TestCreateLancamento" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestValidValues.Test1" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestValidValues.Test2" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestInvalidValues.Test1" executed="True" result="Success" success="True" time="0.026" asserts="0" />
+                  <test-case name="TestInvalidValues.Test2" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="TestInvalidValues.Test3" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="UserControllerTests" executed="true" result="Success" success="True" time="0.185" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TUserControllerTest" executed="True" result="Success" success="True" time="0.185" >
                 <results>
                   <test-case name="CreateUser_WithValidParameters_ShouldReturnUserID" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="UpdateUser_WithValidParameters_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
@@ -51,46 +80,9 @@
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="CentroCustoControllerTests" executed="true" result="Success" success="True" time="5.723" asserts="0" >
+        <test-suite type="Namespace" name="ResumoValorTotalTests" executed="true" result="Success" success="True" time="0.142" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TCentroCustoControllerTests" executed="True" result="Success" success="True" time="5.723" >
-                <results>
-                  <test-case name="Insert_WhenCalled_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Update_WhenCalled_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Delete_WhenCalled_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="ResumoCentroCustoPaiTests" executed="true" result="Success" success="True" time="2.025" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TResumoCentroCustoPaiTests" executed="True" result="Success" success="True" time="2.025" >
-                <results>
-                  <test-case name="Atualizar_DeveIncrementarOValorResumo" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Atualizar_ComMultiplosLancamentos_DeveSomarValores" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Atualizar_ComLancamentosDeCentrosCustosDiferentes_DeveIgnorarCentrosCustosDiferentes" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="LancamentoModelTests" executed="true" result="Success" success="True" time="2.010" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TTestLancamentoModel" executed="True" result="Success" success="True" time="2.010" >
-                <results>
-                  <test-case name="TestCreateLancamento" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestValidValues.Test1" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestValidValues.Test2" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestInvalidValues.Test1" executed="True" result="Success" success="True" time="0.018" asserts="0" />
-                  <test-case name="TestInvalidValues.Test2" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                  <test-case name="TestInvalidValues.Test3" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                  <test-case name="TestInvalidValues.Test4" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="ResumoValorTotalTests" executed="true" result="Success" success="True" time="1.959" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TResumoValorTotalTests" executed="True" result="Success" success="True" time="1.959" >
+              <test-suite type="Fixture" name="TResumoValorTotalTests" executed="True" result="Success" success="True" time="0.142" >
                 <results>
                   <test-case name="Atualizar_DeveIncrementarOValorResumo" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="Atualizar_ComMultiplosLancamentos_DeveSomarValores" executed="True" result="Success" success="True" time="0.000" asserts="0" />
@@ -99,9 +91,53 @@
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="SecurityTests" executed="true" result="Success" success="True" time="1.944" asserts="0" >
+        <test-suite type="Namespace" name="CentroCustoControllerTests" executed="true" result="Success" success="True" time="0.125" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TSecurityTests" executed="True" result="Success" success="True" time="1.944" >
+              <test-suite type="Fixture" name="TCentroCustoControllerTests" executed="True" result="Success" success="True" time="0.125" >
+                <results>
+                  <test-case name="Insert_WhenCalled_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Update_WhenCalled_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Delete_WhenCalled_ShouldReturnTrue" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="ResumoCentroCustoFilhoTests" executed="true" result="Success" success="True" time="0.096" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TResumoCentroCustoFilhoTests" executed="True" result="Success" success="True" time="0.096" >
+                <results>
+                  <test-case name="Atualizar_DeveIncrementarOValorResumo" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Atualizar_ComMultiplosLancamentos_DeveSomarValores" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Atualizar_ComLancamentosDeCentrosCustosDiferentes_DeveIgnorarCentrosCustosDiferentes" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="CentroCustoModelTests" executed="true" result="Success" success="True" time="0.072" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TCentroCustoModelTests" executed="True" result="Success" success="True" time="0.072" >
+                <results>
+                  <test-case name="TestCreateCentroCusto" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestGetCodigoCompleto" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestGetValorTotal" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="OrcamentoTests" executed="true" result="Success" success="True" time="0.048" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TOrcamentoTests" executed="True" result="Success" success="True" time="0.048" >
+                <results>
+                  <test-case name="AdicionarCentroCusto_DeveAdicionarCentroCustoNaLista" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="AdicionarObservador_DeveAdicionarObservadorNaLista" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Notificar_DeveAtualizarTodosObservadores" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="SecurityTests" executed="true" result="Success" success="True" time="0.031" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TSecurityTests" executed="True" result="Success" success="True" time="0.031" >
                 <results>
                   <test-case name="TestHashPassword" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="TestIsHash" executed="True" result="Success" success="True" time="0.000" asserts="0" />
@@ -109,55 +145,13 @@
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="CentroCustoDAOTests" executed="true" result="Success" success="True" time="1.931" asserts="0" >
+        <test-suite type="Namespace" name="ResumoCentroCustoPaiTests" executed="true" result="Success" success="True" time="0.015" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TCentroCustoDAOTest" executed="True" result="Success" success="True" time="1.931" >
+              <test-suite type="Fixture" name="TResumoCentroCustoPaiTests" executed="True" result="Success" success="True" time="0.015" >
                 <results>
-                  <test-case name="TestInsertAndSelect" executed="True" result="Success" success="True" time="0.094" asserts="0" />
-                  <test-case name="TestUpdate" executed="True" result="Success" success="True" time="0.047" asserts="0" />
-                  <test-case name="TestDelete" executed="True" result="Success" success="True" time="0.048" asserts="0" />
-                  <test-case name="TestGetAll" executed="True" result="Success" success="True" time="0.045" asserts="0" />
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="UserModelTests" executed="true" result="Success" success="True" time="0.412" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TUserModelTests" executed="True" result="Success" success="True" time="0.412" >
-                <results>
-                  <test-case name="TestCreateUser" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestSetAndGetUsername" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestSetAndGetPassword" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                  <test-case name="TestSetAndGetUserID" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="CentroCustoModelTests" executed="true" result="Success" success="True" time="0.399" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TCentroCustoModelTests" executed="True" result="Success" success="True" time="0.399" >
-                <results>
-                  <test-case name="TestCreateCentroCusto" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestGetCodigoCompleto" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestGetValorTotal" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                  <test-case name="TestAdicionarLancamentoInvalido" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                  <test-case name="TestInvalidCentroCusto.Test1" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                  <test-case name="TestInvalidCentroCusto.Test2" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestInvalidCentroCusto.Test3" executed="True" result="Success" success="True" time="0.002" asserts="0" />
-                  <test-case name="TestInvalidCentroCusto.Test4" executed="True" result="Success" success="True" time="0.001" asserts="0" />
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="UserDAOTest" executed="true" result="Success" success="True" time="0.363" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TUserDAOTest" executed="True" result="Success" success="True" time="0.363" >
-                <results>
-                  <test-case name="TestInsertAndSelect" executed="True" result="Success" success="True" time="0.095" asserts="0" />
-                  <test-case name="TestUpdate" executed="True" result="Success" success="True" time="0.046" asserts="0" />
-                  <test-case name="TestDelete" executed="True" result="Success" success="True" time="0.046" asserts="0" />
-                  <test-case name="TestGetAll" executed="True" result="Success" success="True" time="0.051" asserts="0" />
-                  <test-case name="TestSelectByUsername" executed="True" result="Success" success="True" time="0.091" asserts="0" />
+                  <test-case name="Atualizar_DeveIncrementarOValorResumo" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Atualizar_ComMultiplosLancamentos_DeveSomarValores" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="Atualizar_ComLancamentosDeCentrosCustosDiferentes_DeveIgnorarCentrosCustosDiferentes" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
           </results>

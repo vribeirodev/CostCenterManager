@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
   Vcl.ExtCtrls, Vcl.Buttons, uDBConfig, UserController, UserModel, UserDAO,
-  UserFactory, UserDAOIntf, UserFactoryIntf, MainForm;
+  UserFactory, UserDAOIntf, UserFactoryIntf, uFormPrincipal;
 
 type
   TFormLogin = class(TForm)
@@ -77,7 +77,7 @@ end;
 
 procedure TFormLogin.btnConfirmarClick(Sender: TObject);
 var
-  FormMain : TFormMain;
+  FormPrincipal : TFormPrincipal;
   UserController: TUserController;
   UserDAO: IUserDAO;
   UserFactory: IUserFactory;
@@ -99,8 +99,8 @@ begin
   if Authenticated then
   begin
     Self.hide;
-    FormMain := TFormMain.Create(nil);
-    FormMain.ShowModal;
+    FormPrincipal := TFormPrincipal.Create(nil);
+    FormPrincipal.ShowModal;
   end
   else
   begin
